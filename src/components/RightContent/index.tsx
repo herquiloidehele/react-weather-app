@@ -25,6 +25,8 @@ const Section = styled.section`
     margin: 0;
     border-radius: 0;
     border: 0;
+    height: auto;
+    overflow: hidden;
   }
   
 `

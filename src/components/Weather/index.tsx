@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ExapleImage from '../../assets/images/icons/weather/example.svg'
+import BreakPoints from '../../utils/Breakpoints'
 
 const Weather: React.FC = () => {
 
@@ -25,7 +26,6 @@ const Weather: React.FC = () => {
 export default Weather;
 
 const WeatherContainer = styled.div`
-  
   margin: 3em auto;
   width: 100%;
   display: flex;
@@ -57,6 +57,22 @@ const WeatherContainer = styled.div`
       }
     }
   }
+
+  @media all and ${BreakPoints.small}{
+    margin: 1em auto;
+    
+    img{
+      max-width: 100px;
+      //display: none;
+    }
+
+    div{
+      margin-bottom: 0;
+    }
+    
+  }
+  
+  
 `;
 
 const WeekDay = styled.div`

@@ -33,7 +33,14 @@ const SideBarContainer = styled.aside`
     margin: 0;
     border: 0;
     border-radius: 0;
+    height: auto;
+    overflow: hidden;
+    background: #0759B3;
+    hr{
+      display: none;
+    }
   }
+  
   
   
 

@@ -36,7 +36,7 @@ const InputSearch = styled.div`
     height: 100%;
     border: none;
     background-color: #F7F6F9;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   input::placeholder{

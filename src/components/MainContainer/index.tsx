@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SideBar from "../SodeBar";
+import SideBar from "../SideBar";
 import RightContent from "../RightContent";
 import BreakPoints from '../../utils/Breakpoints'
 

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BreakPoints from '../../utils/Breakpoints'
 import Search from "../Search";
+import Weather from "../Weather";
 
 
 const SideBar: React.FC = () => {
@@ -9,6 +10,8 @@ const SideBar: React.FC = () => {
     return (
         <SideBarContainer>
             <Search/>
+            <Weather/>
+            <hr/>
         </SideBarContainer>
     )
 }
@@ -23,6 +26,7 @@ const SideBarContainer = styled.aside`
   width: 30%;
   border-radius: 40px 0 0 40px;
   padding: 20px;
+  overflow-y: scroll;
 
   @media all and ${BreakPoints.preMedium}{
     width: auto;

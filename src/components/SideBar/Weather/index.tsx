@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ExapleImage from '../../assets/images/icons/weather/example.svg'
-import BreakPoints from '../../utils/Breakpoints'
+import ExapleImage from '../../../assets/images/icons/weather/example.svg'
+import BreakPoints from '../../../utils/Breakpoints'
 
 const Weather: React.FC = () => {
 

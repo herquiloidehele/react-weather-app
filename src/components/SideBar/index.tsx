@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import BreakPoints from '../../utils/Breakpoints'
-import Search from "../Search";
-import Weather from "../Weather";
+import Search from "./Search";
+import Weather from "./Weather";
+import Footer from "./Footer";
 
 
 const SideBar: React.FC = () => {
@@ -12,6 +13,7 @@ const SideBar: React.FC = () => {
             <Search/>
             <Weather/>
             <hr/>
+            <Footer/>
         </SideBarContainer>
     )
 }

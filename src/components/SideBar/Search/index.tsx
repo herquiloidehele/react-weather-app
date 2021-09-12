@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchOutline from '../../assets/images/icons/search-outline.svg'
+import SearchOutline from '../../../assets/images/icons/search-outline.svg'
 
 const Search: React.FC = () => {
 

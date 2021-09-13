@@ -9,10 +9,37 @@ import UnitMeasurement from "./UnitMeasurement";
 
 const DailySummary: React.FC = () => {
 
+    const breakpoints = {
+        320: {
+            slidesPerView: 1.3,
+            spaceBetween: 10
+        },
+        480: {
+            slidesPerView: 1.9,
+            spaceBetween: 10
+        },
+        740: {
+            slidesPerView: 2.3,
+            spaceBetween: 10
+        },
+        900: {
+            slidesPerView: 2.9,
+            spaceBetween: 10
+        },
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 10
+        }
+    }
+
     return (
        <DailySummaryContainer>
            <HeadingTitle title={"Resumo Diário"}/>
-           <Swiper slidesPerView={3} spaceBetween={20} className={"cardList"}>
+           <Swiper
+               slidesPerView={3}
+               spaceBetween={20}
+               breakpoints={breakpoints}
+               className={"cardList"}>
                <SwiperSlide>
                    <Defaultcard title={"Ventos"} description={"Normal"}>
                        <UnitMeasurement value={12} unit={"km/h"}/>

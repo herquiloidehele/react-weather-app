@@ -14,7 +14,7 @@ const Defaultcard: React.FC<Props> = ({children, title, description}) => {
                     <span>{title}</span>
                 </div>
 
-                {children}
+                <div className={"childrenElement"}>{children}</div>
 
                 <div className={"description"}>
                     {description}
@@ -31,13 +31,11 @@ export default  Defaultcard;
 const CardContainer = styled.div`
   background-color: white;
   width: 100%;
-  height: 200px;
   border-radius: 8px;
 
   div.container {
-    background-color: transparent;
     height: 100%;
-    padding: 0 1em;
+    padding: 1.4em 1.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -45,10 +43,17 @@ const CardContainer = styled.div`
 
   .title {
     color: #858585;
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   .description {
     color: #4f4f4f;
+    font-size: 0.9em;
   }
+  
+  .childrenElement{
+    height: 80px;
+    margin: 2em 0;
+  }
+  
 `;

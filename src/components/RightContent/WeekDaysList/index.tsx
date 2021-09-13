@@ -3,19 +3,38 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import WeekDay from "./WeekDay";
+import SolIcon from "../../../assets/images/icons/weather/sol.svg";
 
 const WeekDaysList: React.FC = () => {
 
     const diasSemana = [1,2,3,4,5,6,7];
 
+    const breakpoints = {
+        320: {
+            slidesPerView: 2.5,
+                spaceBetween: 10
+        },
+        480: {
+            slidesPerView: 3,
+                spaceBetween: 10
+        },
+        640: {
+            slidesPerView: 4.6,
+            spaceBetween: 10
+        },
+        1200: {
+            slidesPerView: 7,
+            spaceBetween: 10
+        }
+    };
+
     return (
       <WeekDaysListContainer>
           <Swiper
-              spaceBetween={10}
-              slidesPerView={4.6}>
+              breakpoints={breakpoints}>
               {diasSemana.map((dia, index) => (
                   <SwiperSlide key={index}>
-                      <WeekDay weather={{temperatura: 16, icon: '', diaSemana: 'Sabado'}}/>
+                      <WeekDay weather={{temperatura: 16, icon: SolIcon, diaSemana: 'Sábado'}}/>
                   </SwiperSlide>
               ))}
           </Swiper>

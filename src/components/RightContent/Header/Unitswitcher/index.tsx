@@ -34,7 +34,7 @@ const UnitSwitcherContainer = styled.div`
 
   @media all and ${BreakPoints.preMedium}{
     svg{
-      width: 30px;
+      width: 32px;
     }
   }
 

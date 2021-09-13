@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SideBar from "../SideBar";
-import RightContent from "../RightContent";
+import SideBar from "./SideBar";
+import RightContent from "./RightContent";
 import BreakPoints from '../../utils/Breakpoints'
 
 const MainContainer: React.FC = () => {
@@ -19,7 +19,7 @@ const Main = styled.main`
   height: 90vh;
   width: 90vw;
   background-color: #F7F6F9;
-  border-radius: 40px;
+  border-radius: 30px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2em;
@@ -31,7 +31,7 @@ const Main = styled.main`
   
   @media all and ${BreakPoints.preMedium}{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     margin: 0;
     border: 0;
     flex-direction: column;

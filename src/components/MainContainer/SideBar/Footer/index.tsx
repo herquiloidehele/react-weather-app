@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import NuvemExemplo from '../../../assets/images/icons/weather/NuvemExemplo.svg'
-import Precipitacao from '../../../assets/images/icons/weather/Precipitacao.svg'
-import Breakpoints from '../../../utils/Breakpoints'
+import NuvemExemplo from '../../../../assets/images/icons/weather/NuvemExemplo.svg'
+import Precipitacao from '../../../../assets/images/icons/weather/Precipitacao.svg'
+import Breakpoints from '../../../../utils/Breakpoints'
 
 const Footer: React.FC = () => {
 

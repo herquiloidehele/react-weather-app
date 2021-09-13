@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import BreakPoints from '../../utils/Breakpoints'
+import BreakPoints from '../../../utils/Breakpoints'
 import Header from "./Header";
 import WeekDaysList from "./WeekDaysList";
+import DailySummary from "./DailySummary";
 
 const RightContent: React.FC = () => {
 
@@ -10,6 +11,7 @@ const RightContent: React.FC = () => {
         <Section>
             <Header/>
             <WeekDaysList/>
+            <DailySummary/>
         </Section>
     )
 }
@@ -20,7 +22,7 @@ const Section = styled.section`
   width: 70%;
   height: 100%;
   background-color: #F7F6F9;
-  border-radius: 0 40px 40px 0;
+  border-radius: 0 30px 30px 0;
   padding: 20px;
 
   @media all and ${BreakPoints.preMedium}{

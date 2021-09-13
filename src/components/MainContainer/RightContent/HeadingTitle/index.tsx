@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BreakPoints from '../../../utils/Breakpoints'
+import BreakPoints from '../../../../utils/Breakpoints'
 
 
 interface Props{
@@ -17,8 +17,8 @@ export default HeadingTitle;
 
 
 const Title = styled.h1`
-  color: #0759B3;
-  font-size: 1.4em;
+  color: #317ACA;
+  font-size: 1.3em;
   font-weight: bolder;
   
   @media all and ${BreakPoints.preMedium}{

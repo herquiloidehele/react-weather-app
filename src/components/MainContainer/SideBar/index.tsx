@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import BreakPoints from '../../utils/Breakpoints'
+import BreakPoints from '../../../utils/Breakpoints'
 import Search from "./Search";
 import Weather from "./Weather";
 import Footer from "./Footer";
@@ -26,7 +26,7 @@ const SideBarContainer = styled.aside`
   height: 100%;
   background: linear-gradient(180deg, #0759B3 16.85%, rgba(0, 122, 255, 0) 138.95%);
   width: 30%;
-  border-radius: 40px 0 0 40px;
+  border-radius: 30px 0 0 30px;
   padding: 20px;
   overflow-y: scroll;
 

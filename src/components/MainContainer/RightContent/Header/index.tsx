@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import HeadingTitle from "../HeadingTitle";
-import BreakPoints from '../../../utils/Breakpoints'
+import BreakPoints from '../../../../utils/Breakpoints'
 import UnitSwitcher from "./Unitswitcher";
 
 
@@ -22,6 +22,7 @@ const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     padding: 0 15px;
+    padding-left: 0;
     align-items: center;
 
   @media all and ${BreakPoints.preMedium}{

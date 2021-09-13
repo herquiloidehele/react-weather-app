@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import WeekDay from "./WeekDay";
-import SolIcon from "../../../assets/images/icons/weather/sol.svg";
+import SolIcon from "../../../../assets/images/icons/weather/sol.svg";
 
 const WeekDaysList: React.FC = () => {
 

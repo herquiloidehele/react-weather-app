@@ -22,7 +22,7 @@ const Section = styled.section`
   padding: 20px;
 
   @media all and ${BreakPoints.preMedium}{
-    width: 100%;
+    width: auto;
     margin: 0;
     border-radius: 0;
     border: 0;

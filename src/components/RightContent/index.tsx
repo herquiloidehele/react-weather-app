@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import BreakPoints from '../../utils/Breakpoints'
+import Header from "./Header";
 
 const RightContent: React.FC = () => {
 
     return (
         <Section>
-            <h1>Main Container</h1>
+            <Header/>
         </Section>
     )
 }

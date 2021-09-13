@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import BreakPoints from '../../utils/Breakpoints'
 import Header from "./Header";
+import WeekDaysList from "./WeekDaysList";
 
 const RightContent: React.FC = () => {
 
     return (
         <Section>
             <Header/>
+            <WeekDaysList/>
         </Section>
     )
 }

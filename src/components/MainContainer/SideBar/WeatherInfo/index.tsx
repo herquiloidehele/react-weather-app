@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import ExapleImage from '../../../../assets/images/icons/weather/example.svg'
 import BreakPoints from '../../../../utils/Breakpoints'
-import {Weather} from "../../../../models";
+import {UnitiMeasurement, Weather} from "../../../../models";
 import moment from "moment";
 import {getWeekName} from '../../../../utils/functions'
 
 interface Props{
     weather: Weather;
+    unitMeasurement: UnitiMeasurement
 }
 
-const WeatherInfo: React.FC<Props> = ({weather}) => {
+const WeatherInfo: React.FC<Props> = ({weather, unitMeasurement}) => {
 
     function formatWeekName() {
         return getWeekName(weather?.date?.getDay());
@@ -24,7 +25,7 @@ const WeatherInfo: React.FC<Props> = ({weather}) => {
     }
 
     return (
-        <WeatherContainer>
+        <WeatherContainer unidade={unitMeasurement.symbol}>
             <img alt={"WeatherInfo Icon Example"} src={ExapleImage}/>
 
             <div>
@@ -42,7 +43,12 @@ const WeatherInfo: React.FC<Props> = ({weather}) => {
 
 export default WeatherInfo;
 
-const WeatherContainer = styled.div`
+
+type PropsStyle = {
+    unidade: string | undefined
+}
+
+const WeatherContainer = styled.div<PropsStyle>`
   margin: 3em auto;
   width: 100%;
   display: flex;
@@ -66,7 +72,7 @@ const WeatherContainer = styled.div`
       font-weight: bolder;
       display: inline;
       &::after{
-        content: "°C";
+        content: "${((props) => props.unidade)}";
         font-size: 30px;
         position: absolute;
         top: 10px;

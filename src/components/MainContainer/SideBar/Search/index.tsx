@@ -1,27 +1,52 @@
 import styled from "styled-components";
 import SearchOutline from '../../../../assets/images/icons/search-outline.svg'
-import {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {GlobalContext} from "../../../../store/GlobalStore";
-
+import {useFetchPlaces} from "../../../../hooks/useFetch";
+import SearchResults from "./SearchResults/inde";
 
 const Search: React.FC = () => {
 
     const {setQueryCity} = useContext(GlobalContext);
+    const {searchResults, setSearchText} = useFetchPlaces();
+
+    const [focusInput, setFocusInput] = useState(false);
 
     function handleKeyUp(event?: any){
+
+        const {value} = event.target;
+
+        if (value){
+            console.log('setting');
+            setSearchText(value);
+        }
+
         if (event.key === 'Enter'){
-            console.log(event.target.value);
-            setQueryCity(event.target.value);
+            console.log(value);
+            setQueryCity(value);
         }else{
             console.log("Not yet");
         }
     }
 
+    function showResultComponent(){
+        return focusInput && searchResults;
+    }
+
     return (
-        <InputSearch>
-            <img alt={"Search Icon"} src={SearchOutline}/>
-            <input onKeyUp={(event) => handleKeyUp(event)} type={"search"} placeholder={"Pesquisar Cidades"}/>
-        </InputSearch>
+        <>
+            <InputSearch>
+                <img alt={"Search Icon"} src={SearchOutline}/>
+                <input
+                    onBlur={() => setTimeout(() => {setFocusInput(false)}, 500)}
+                    onFocus={() => setFocusInput(true)}
+                    onKeyUp={(event) => handleKeyUp(event)}
+                    type={"search"}
+                    placeholder={"Pesquisar Cidades"}/>
+            </InputSearch>
+
+            {showResultComponent() && (<SearchResults searchResults={searchResults}/>)}
+        </>
     )
 }
 

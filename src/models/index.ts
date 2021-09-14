@@ -42,3 +42,8 @@ export interface WeatherForecast {
     icon?: string,
     date?: Date
 }
+
+export interface CityResults {
+    countryCode: string,
+    name: string
+}

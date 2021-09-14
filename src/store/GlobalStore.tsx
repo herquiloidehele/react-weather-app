@@ -1,23 +1,41 @@
 import React, {useState} from "react";
+import {UnitiMeasurement} from '../models'
 
 
-export const Context = React.createContext({});
+//Initializing Instances
+const _unitMeasurement: UnitiMeasurement = {}
 
-const GlobalStore: React.FC = ({children}) => {
 
-    const [unitMeasurement, setUnitMeasurement] = useState('CELSIUS');
+export const GlobalContext = React.createContext({
+        unitMeasurement :_unitMeasurement,
+        setUnitMeasurement: (_: UnitiMeasurement) => {}
+    }
+);
 
+export const GlobalStore: React.FC = ({children}) => {
+
+    //States
+    const [unitMeasurement, _setUnitMeasurement] = useState(_unitMeasurement);
+
+
+
+
+    //Setters
+    function setUnitMeasurement(unit: UnitiMeasurement) {
+        _setUnitMeasurement(unit)
+    }
+
+
+    //wrapping all context together
     const allContext = {
         unitMeasurement,
         setUnitMeasurement
     };
 
+
     return (
-        <Context.Provider value={allContext}>
+        <GlobalContext.Provider value={allContext}>
             {children}
-        </Context.Provider>
+        </GlobalContext.Provider>
     )
 }
-
-
-export default GlobalStore;

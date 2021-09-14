@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import ExapleImage from '../../../../assets/images/icons/weather/example.svg'
 import BreakPoints from '../../../../utils/Breakpoints'
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 const Weather: React.FC = () => {
 
+    const context = useContext(GlobalContext);
 
     return (
         <WeatherContainer>
@@ -12,6 +14,9 @@ const Weather: React.FC = () => {
 
             <div>
                 <h1>12</h1>
+
+                <h2>{
+                    context.unitMeasurement.name}</h2>
             </div>
 
             <WeekDay>

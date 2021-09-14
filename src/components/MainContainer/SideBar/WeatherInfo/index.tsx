@@ -32,8 +32,6 @@ const WeatherInfo: React.FC<Props> = ({weather}) => {
 
             <div>
                 <h1>{weather.max}</h1>
-
-                <h2>{context.unitMeasurement.name}</h2>
             </div>
 
             <WeekDay>

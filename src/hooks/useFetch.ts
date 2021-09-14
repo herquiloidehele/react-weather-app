@@ -13,12 +13,12 @@ export const useFetchForecast = (cityName: string, days: number) => {
 
     useEffect(() => {
         getDaysForecast(cityName, days)
-    }, [cityName, days])
+    }, [cityName, days, context.unitMeasurement])
 
 
     const getDaysForecast = (cityName: string, days: number) => {
         setLoading(true);
-        openWeatherApi.get(`forecast/?q=${cityName}&cnt=${days}`).then((response: AxiosResponse) => {
+        openWeatherApi.get(`forecast/?q=${cityName}&cnt=${days}&units=${context.unitMeasurement.name}`).then((response: AxiosResponse) => {
             console.log({response});
             const {todayWeather, forecastWeather} = convertResponse(response.data);
 
@@ -34,4 +34,3 @@ export const useFetchForecast = (cityName: string, days: number) => {
     return {loading, error};
 
 }
-

@@ -3,7 +3,7 @@ import {UnitiMeasurement, Weather, WeatherForecast} from '../models'
 
 
 //Initializing Instances
-const _unitMeasurement: UnitiMeasurement = {}
+const _unitMeasurement: UnitiMeasurement = {name: 'metric', symbol: '°C'}
 const _weather: Weather = {};
 const _weatherForecast: WeatherForecast[] = []
 

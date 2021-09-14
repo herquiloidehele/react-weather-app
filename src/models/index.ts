@@ -5,6 +5,11 @@ export interface UnitiMeasurement{
     symbol?: string
 }
 
+export enum UnitNames{
+    CELSIUS = 'metric',
+    FAHRENHEIT = 'imperial'
+}
+
 export interface City{
     id?: string,
     name?: string,

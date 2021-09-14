@@ -25,13 +25,16 @@ export interface Weather{
     humidity?: number,
     pressure?: number,
     wind?: number,
-    cityId?: number,
     sunrise?: number,
     sunset?: number,
-    rain?: number
+    rain?: number,
+    city?: City,
 }
 
 
 export interface WeatherForecast {
-    weatherList?: Weather[]
+    max?: number,
+    min?: number,
+    icon?: string,
+    date?: Date
 }

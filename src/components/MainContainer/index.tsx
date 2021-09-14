@@ -6,7 +6,7 @@ import BreakPoints from '../../utils/Breakpoints'
 import {useFetchForecast} from "../../hooks/useFetch";
 const MainContainer: React.FC = () => {
 
-    const {loading, error } = useFetchForecast('Maputo', 20);
+    const {loading, error } = useFetchForecast('Maputo', 40);
 
     if (loading) return <h1>Loading...</h1>
 

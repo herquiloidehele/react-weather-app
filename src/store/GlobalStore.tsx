@@ -6,7 +6,7 @@ import {City, UnitiMeasurement, Weather, WeatherForecast} from '../models'
 const _unitMeasurement: UnitiMeasurement = {}
 const _city: City = {};
 const _weather: Weather = {};
-const _weatherForecast: WeatherForecast = {}
+const _weatherForecast: WeatherForecast[] = []
 
 
 export const GlobalContext = React.createContext({
@@ -17,7 +17,7 @@ export const GlobalContext = React.createContext({
         setUnitMeasurement: (_: UnitiMeasurement) => {},
         setCity: (_: City) => {},
         setWeather: (_: Weather) => {},
-        setWeatherForecast: (_: WeatherForecast) => {}
+        setWeatherForecast: (_: WeatherForecast[]) => {}
     }
 );
 
@@ -43,7 +43,7 @@ export const GlobalStore: React.FC = ({children}) => {
         _setWeather(weather)
     }
 
-    function setWeatherForecast(weatherForecast: WeatherForecast){
+    function setWeatherForecast(weatherForecast: WeatherForecast[]){
         _setWeatherForecast(weatherForecast)
     }
 

@@ -20,9 +20,10 @@ export const useFetchForecast = (cityName: string, days: number) => {
         setLoading(true);
         openWeatherApi.get(`forecast/?q=${cityName}&cnt=${days}`).then((response: AxiosResponse) => {
             console.log({response});
-            const {currentWeather, city} = convertResponse(response.data);
-            context.setWeather(currentWeather);
-            context.setCity(city);
+            const {todayWeather, forecastWeather} = convertResponse(response.data);
+
+            context.setWeather(todayWeather);
+            context.setWeatherForecast(forecastWeather)
         }).catch(error => {
             setError(error);
         }).finally(() => {
@@ -30,7 +31,6 @@ export const useFetchForecast = (cityName: string, days: number) => {
         });
     }
 
-    console.log({loading, error});
     return {loading, error};
 
 }

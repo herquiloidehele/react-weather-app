@@ -14,7 +14,6 @@ export function getWeekName(weekNumber: number| undefined): string{
 
 
 export function getShortWeekName(weekNumber: number| undefined){
-    console.log({weekNumber});
     return getWeekName(weekNumber).substr(0,3);
 }
 

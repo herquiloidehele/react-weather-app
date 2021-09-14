@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import styled from "styled-components";
 import SideBar from "./SideBar";
 import RightContent from "./RightContent";
@@ -6,9 +6,9 @@ import BreakPoints from '../../utils/Breakpoints'
 import {useFetchForecast} from "../../hooks/useFetch";
 const MainContainer: React.FC = () => {
 
-    const {loading, error } = useFetchForecast('Inhambane', 40);
+    const {loading, error } = useFetchForecast('Maputo', 40);
 
-    if (loading) return <h1>Loading...</h1>
+    // if () return <h1>Loading...</h1>
 
     if (error) return <h3>Erro occured</h3>
 

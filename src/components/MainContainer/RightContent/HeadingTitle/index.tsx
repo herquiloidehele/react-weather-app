@@ -3,7 +3,7 @@ import BreakPoints from '../../../../utils/Breakpoints'
 
 
 interface Props{
-    title: string;
+    title: string | undefined;
 }
 
 const HeadingTitle: React.FC<Props> = ({title}) => {

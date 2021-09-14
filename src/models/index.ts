@@ -22,11 +22,16 @@ export interface Weather{
     min?: number
     condition?: string,
     icon?: string,
-    humity?: number,
+    humidity?: number,
     pressure?: number,
     wind?: number,
     cityId?: number,
     sunrise?: number,
     sunset?: number,
     rain?: number
+}
+
+
+export interface WeatherForecast {
+    weatherList?: Weather[]
 }

@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import HeadingTitle from "../HeadingTitle";
 import BreakPoints from '../../../../utils/Breakpoints'
 import UnitSwitcher from "./Unitswitcher";
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 
 const Header: React.FC = () => {
 
+    const context = useContext(GlobalContext);
+
     return (
         <HeaderContainer>
-            <HeadingTitle title={"Maputo -MZ"}/>
+            <HeadingTitle title={context.city.name + " - " + context.city.country}/>
             <UnitSwitcher/>
         </HeaderContainer>
     )

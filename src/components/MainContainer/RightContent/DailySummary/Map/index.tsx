@@ -45,6 +45,7 @@ const Map: React.FC = () => {
             onLoad={onLoad}
             onUnmount={onUnmount}
         >
+            {console.log(map)}
             { /* Child components, such as markers, info windows, etc. */ }
             <></>
         </GoogleMap>

@@ -17,7 +17,7 @@ export interface City{
 }
 
 export interface Weather{
-    timestamp?: number,
+    date?: Date,
     max?: number,
     min?: number
     condition?: string,

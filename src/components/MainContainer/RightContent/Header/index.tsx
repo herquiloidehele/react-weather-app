@@ -8,11 +8,15 @@ import {GlobalContext} from "../../../../store/GlobalStore";
 
 const Header: React.FC = () => {
 
-    const context = useContext(GlobalContext);
+    const {weather} = useContext(GlobalContext);
+
+    function getTitle(){
+        return String(`${weather.city?.name} - ${weather.city?.country}`)
+    }
 
     return (
         <HeaderContainer>
-            <HeadingTitle title={context.weather?.city?.name + " - " + context.weather?.city?.country}/>
+            <HeadingTitle title={getTitle()}/>
             <UnitSwitcher/>
         </HeaderContainer>
     )

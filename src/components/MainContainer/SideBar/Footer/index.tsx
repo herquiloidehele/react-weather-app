@@ -19,7 +19,7 @@ const Footer: React.FC<Props> = ({weather}) => {
                     <span>{weather.condition}</span>
                 </div>
 
-                <div>
+                <div className={"info"}>
                     <img alt="Icon precipitação" src={Precipitacao}/>
                     <span>Precipitação - {weather.rain}%</span>
                 </div>
@@ -28,7 +28,7 @@ const Footer: React.FC<Props> = ({weather}) => {
             <div id={"city-image"}>
                 <img alt={"Imagem da Cidade"} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7y18MBsl0VLMNhFE6p-YHmeIcB4lQQXRqhFAfalRd_feDTGJsbsyWmHSzNzQrCWppurM&usqp=CAU"}/>
                 <div className={"sombra"}>
-                    <h6>{weather.city?.name} - {weather.city?.country}</h6>
+                    <h6>{String(weather.city?.name).toUpperCase()} - {weather.city?.country}</h6>
                 </div>
             </div>
         </FooterContainer>
@@ -48,9 +48,17 @@ const FooterContainer = styled.footer`
       img {
         margin-right: 1em;
       }
+      
+      .info{
+        display: flex;
+        justify-content: left;
+        align-content: center;
+        align-items: center;
+      }
 
       span {
         font-size: 1.1em;
+        text-transform: capitalize;
       }
     }
   }

@@ -16,7 +16,7 @@ function formatCurrentDayWeather(responseData: any){
     const forecastItem: any = getCurrentDayWeatherMetadata(responseData);
 
     const currentWeather: Weather = {
-        timestamp: forecastItem.dt,
+        date: new Date(forecastItem.dt),
         max: Math.round(forecastItem.main.temp_max),
         min: Math.round(forecastItem.main.temp_max),
         condition: _.first([...forecastItem.weather]).description,
@@ -25,6 +25,7 @@ function formatCurrentDayWeather(responseData: any){
         pressure: forecastItem.main.pressure,
         wind: forecastItem.wind.speed,
         city: getCity(responseData.city),
+        rain: forecastItem.pop,
         sunrise: responseData.city.sunrise,
         sunset: responseData.city.sunset
     }
@@ -61,7 +62,6 @@ export function getCurrentDayWeatherMetadata(responseData: any){
         const currentDayTimestamps = groupedTimestamps[currentDate];
         const closestTimestamp = _.first(currentDayTimestamps);
 
-        console.log({closestTimestamp});
         return closestTimestamp;
 
     }catch (error){
@@ -94,7 +94,6 @@ export function formatForecastWeather(responseData: any){
                 date: new Date(date)
             }
 
-            console.log(forecast);
             forecastTimestamps.push(forecast);
         }
 

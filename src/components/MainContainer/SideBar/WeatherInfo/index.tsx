@@ -16,14 +16,14 @@ const WeatherInfo: React.FC<Props> = ({weather}) => {
     const context = useContext(GlobalContext);
 
     function formatWeekName() {
-        return getWeekName(Number(weather.timestamp));
+        return getWeekName(weather?.date?.getDay());
     }
 
     function formatTime(){
-        if (!weather.timestamp){
+        if (!weather.date){
             return ''
         }
-        return `${moment(weather.timestamp).hour()}H : ${moment(weather.timestamp).minute()}Min`
+        return `${moment(weather.date).hour()}:${moment(weather.date).minute()}min`
     }
 
     return (

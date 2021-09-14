@@ -1,19 +1,30 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Bar } from 'react-chartjs-2';
 import {ChartData} from "chart.js";
 import styled from "styled-components";
 import BreakPoints from './../../../../../utils/Breakpoints'
-
+import {GlobalContext} from "../../../../../store/GlobalStore";
+import {WeatherForecast} from "../../../../../models";
+import {getShortWeekName} from "../../../../../utils/functions";
 
 const WeartherChart: React.FC = () => {
 
+    const {weatherForecast} = useContext(GlobalContext);
+
+    function getData(): number[]{
+        return weatherForecast.map((forecast: WeatherForecast) => Number(forecast.max))
+    }
+
+    function getDaysOfWeek(): string[]{
+        return weatherForecast.map((forecast: WeatherForecast) => getShortWeekName(forecast.date?.getDay()))
+    }
 
     const data: ChartData = {
-        labels:  ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels:  getDaysOfWeek(),
         datasets: [
             {
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Evolução da Temperatura',
+                data: getData(),
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

@@ -26,9 +26,9 @@ const HeaderContainer = styled.header`
     align-items: center;
 
   @media all and ${BreakPoints.preMedium}{
-    padding: 0px;
+    padding: 0;
     svg{
-      width: 25px;
+      width: 30px;
     }
   }
 `;

@@ -42,7 +42,12 @@ const SideBarContainer = styled.aside`
       display: none;
     }
   }
-  
+
+
+  @media all and ${BreakPoints.medium}{
+    border: 0;
+    border-radius: 0;
+  }
   
   
 

@@ -24,4 +24,8 @@ const Title = styled.h1`
   @media all and ${BreakPoints.preMedium}{
     font-size: 1.2em;
   }
+
+  @media all and ${BreakPoints.small}{
+    font-size: 1em;
+  }
 `;

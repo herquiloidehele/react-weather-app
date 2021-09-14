@@ -2,6 +2,7 @@ import React from "react";
 import { Bar } from 'react-chartjs-2';
 import {ChartData} from "chart.js";
 import styled from "styled-components";
+import BreakPoints from './../../../../../utils/Breakpoints'
 
 
 const WeartherChart: React.FC = () => {
@@ -64,4 +65,8 @@ const WeatherChartContainer = styled.div`
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 2em;
+
+  @media all and ${BreakPoints.preMedium}{
+    padding: 10px;
+  }
 `;

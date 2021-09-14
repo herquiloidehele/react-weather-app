@@ -30,13 +30,18 @@ const Main = styled.main`
   
   
   @media all and ${BreakPoints.preMedium}{
-    width: 100%;
-    height: 100%;
-    margin: 0;
     border: 0;
     flex-direction: column;
     border-radius: 0;
   }
+
+  @media all and ${BreakPoints.medium}{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  
   
 `;
 

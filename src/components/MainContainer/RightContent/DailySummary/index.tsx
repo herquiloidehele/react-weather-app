@@ -8,6 +8,8 @@ import Defaultcard from "./DefaultCard";
 import UnitMeasurement from "./UnitMeasurement";
 import Map from "./Map";
 import WeartherChart from "./WeatherChart";
+import BreakPoints from '../../../../utils/Breakpoints'
+
 
 const DailySummary: React.FC = () => {
 
@@ -78,11 +80,16 @@ const DailySummaryContainer = styled.div`
   padding-bottom: 10px;
 
   .cardList{
-    margin-top: 2em;
+    margin-top: 1.4em;
   }
   
   .map-container{
     margin-top: 2em;
     margin-bottom: 3em;
   }
+
+  @media all and ${BreakPoints.preMedium}{
+    padding-top: 2em;
+  }
+  
 `;

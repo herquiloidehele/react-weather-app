@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import WeekDay from "./WeekDay";
 import SolIcon from "../../../../assets/images/icons/weather/sol.svg";
+import BreakPoints from '../../../../utils/Breakpoints'
+
 
 const WeekDaysList: React.FC = () => {
 
@@ -68,6 +70,10 @@ const WeekDaysListContainer = styled.div`
       align-content: center;
     cursor: pointer;
     }
+
+  @media all and ${BreakPoints.preMedium}{
+    margin-top: 1em;
+  }
 
 
 `;

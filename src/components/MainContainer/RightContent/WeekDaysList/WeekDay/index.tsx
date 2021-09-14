@@ -1,23 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import {WeatherForecast} from "../../../../../models";
+import SolIcon from "../../../../../assets/images/icons/weather/sol.svg";
 
 interface Props {
-    weather: {
-       temperatura: number,
-       icon: string,
-       diaSemana: string
-    }
+    forecast: WeatherForecast
 }
 
-const WeekDay: React.FC<Props> = ({weather}) => {
+const WeekDay: React.FC<Props> = ({forecast}) => {
 
     return (
         <Div>
-            <div><span>{weather.diaSemana.substr(0,3)}</span></div>
-            <img alt={"Icon da Temperatura"} src={weather.icon}/>
+            <div><span>{forecast.date?.toDateString().substr(0,3)}</span></div>
+            <img alt={"Icon da Temperatura"} src={SolIcon}/>
             <div className={"temps"}>
-                <span className={"max"}>{weather.temperatura}</span>
-                <span className={"min"}>{weather.temperatura + 3}</span>
+                <span className={"max"}>{forecast.max}</span>
+                <span className={"min"}>{forecast.min}</span>
             </div>
         </Div>
     );

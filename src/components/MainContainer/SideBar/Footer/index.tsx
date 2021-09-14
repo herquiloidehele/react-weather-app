@@ -3,27 +3,32 @@ import styled from "styled-components";
 import NuvemExemplo from '../../../../assets/images/icons/weather/NuvemExemplo.svg'
 import Precipitacao from '../../../../assets/images/icons/weather/Precipitacao.svg'
 import Breakpoints from '../../../../utils/Breakpoints'
+import {Weather} from "../../../../models";
 
-const Footer: React.FC = () => {
+interface Props{
+    weather: Weather;
+}
+
+const Footer: React.FC<Props> = ({weather}) => {
 
     return (
         <FooterContainer>
             <div id={"addicional-data"}>
                 <div>
                     <img alt="Icon Nuvens" src={NuvemExemplo}/>
-                    <span>Ceu Nublado</span>
+                    <span>{weather.condition}</span>
                 </div>
 
                 <div>
                     <img alt="Icon precipitação" src={Precipitacao}/>
-                    <span>Precipitação - 10%</span>
+                    <span>Precipitação - {weather.rain}%</span>
                 </div>
             </div>
 
             <div id={"city-image"}>
                 <img alt={"Imagem da Cidade"} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7y18MBsl0VLMNhFE6p-YHmeIcB4lQQXRqhFAfalRd_feDTGJsbsyWmHSzNzQrCWppurM&usqp=CAU"}/>
                 <div className={"sombra"}>
-                    <h6>Maputo - Mz</h6>
+                    <h6>{weather.city?.name} - {weather.city?.country}</h6>
                 </div>
             </div>
         </FooterContainer>

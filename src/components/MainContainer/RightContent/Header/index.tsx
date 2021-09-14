@@ -12,7 +12,7 @@ const Header: React.FC = () => {
 
     return (
         <HeaderContainer>
-            <HeadingTitle title={context.city.name + " - " + context.city.country}/>
+            <HeadingTitle title={context.weather?.city?.name + " - " + context.weather?.city?.country}/>
             <UnitSwitcher/>
         </HeaderContainer>
     )

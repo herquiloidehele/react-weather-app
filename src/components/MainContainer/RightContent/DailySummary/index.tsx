@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import HeadingTitle from "../HeadingTitle";
 import SunCard from "./SunCard";
@@ -9,9 +9,12 @@ import UnitMeasurement from "./UnitMeasurement";
 import Map from "./Map";
 import WeartherChart from "./WeatherChart";
 import BreakPoints from '../../../../utils/Breakpoints'
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 
 const DailySummary: React.FC = () => {
+
+    const {weather} = useContext(GlobalContext);
 
     const breakpoints = {
         320: {
@@ -46,19 +49,19 @@ const DailySummary: React.FC = () => {
                className={"cardList"}>
                <SwiperSlide>
                    <Defaultcard title={"Ventos"} description={"Normal"}>
-                       <UnitMeasurement value={12} unit={"km/h"}/>
+                       <UnitMeasurement value={weather.wind} unit={"km/h"}/>
                    </Defaultcard>
                </SwiperSlide>
 
                <SwiperSlide>
                    <Defaultcard title={"Nascer & Pôr do Sol"} description={"Verão"}>
-                       <SunCard/>
+                       <SunCard sunset={weather.sunset} sunrise={weather.sunrise}/>
                    </Defaultcard>
                </SwiperSlide>
 
                <SwiperSlide>
                    <Defaultcard title={"Humidade"} description={"Alta"}>
-                       <UnitMeasurement value={18} unit={'%'}/>
+                       <UnitMeasurement value={weather.humidity} unit={'%'}/>
                    </Defaultcard>
                </SwiperSlide>
            </Swiper>

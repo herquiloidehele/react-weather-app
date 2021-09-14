@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props{
-    value: number;
+    value: number | undefined;
     unit: string;
 }
 

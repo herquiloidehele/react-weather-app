@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import WeekDay from "./WeekDay";
-import SolIcon from "../../../../assets/images/icons/weather/sol.svg";
 import BreakPoints from '../../../../utils/Breakpoints'
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 
 const WeekDaysList: React.FC = () => {
 
-    const diasSemana = [1,2,3,4,5,6,7];
+    const { weatherForecast } = useContext(GlobalContext)
 
     const breakpoints = {
         320: {
@@ -42,9 +42,9 @@ const WeekDaysList: React.FC = () => {
       <WeekDaysListContainer>
           <Swiper
               breakpoints={breakpoints}>
-              {diasSemana.map((dia, index) => (
+              {weatherForecast.map((forecast, index) => (
                   <SwiperSlide key={index}>
-                      <WeekDay weather={{temperatura: 16, icon: SolIcon, diaSemana: 'Sábado'}}/>
+                      <WeekDay forecast={forecast}/>
                   </SwiperSlide>
               ))}
           </Swiper>

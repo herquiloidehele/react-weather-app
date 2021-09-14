@@ -17,8 +17,8 @@ function formatCurrentDayWeather(responseData: any){
 
     const currentWeather: Weather = {
         timestamp: forecastItem.dt,
-        max: forecastItem.main.temp_max,
-        min: forecastItem.main.temp_max,
+        max: Math.round(forecastItem.main.temp_max),
+        min: Math.round(forecastItem.main.temp_max),
         condition: _.first([...forecastItem.weather]).description,
         icon: _.first([...forecastItem.weather]).icon,
         humidity: forecastItem.main.humidity,
@@ -88,8 +88,8 @@ export function formatForecastWeather(responseData: any){
             const icon = _.first([...dateTimestamps.find((timestamp: any) => timestamp.main.temp_max === temp_max).weather])?.icon;
 
             const forecast: WeatherForecast = {
-                max: Number(temp_max),
-                min: Number(temp_min),
+                max: Math.round(Number(temp_max)),
+                min: Math.round(Number(temp_min)),
                 icon: String(icon),
                 date: new Date(date)
             }

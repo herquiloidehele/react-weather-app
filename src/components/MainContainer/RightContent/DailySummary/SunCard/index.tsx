@@ -2,19 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import SunArrowUp from '../../../../../assets/images/icons/sun-arrow-up.svg';
 import SunArrowDown from '../../../../../assets/images/icons/sun-arrow-down.svg';
+import moment from "moment";
 
-const SunCard: React.FC = () => {
+interface Props{
+    sunset: number | undefined,
+    sunrise: number | undefined
+}
+
+const SunCard: React.FC<Props> = ({sunset, sunrise}) => {
+
+
+    function timestampToHour(timestamp: number| undefined){
+        if (!timestamp){
+            return ''
+        }
+     return `${moment(timestamp).hour()}h:${moment(timestamp).minute()}min`
+    }
 
     return (
         <SunCardContainer>
             <div>
                 <img src={SunArrowUp} alt="Sun arrow up"/>
-                <span>06:27min</span>
+                <span>{timestampToHour(sunrise)}</span>
             </div>
 
             <div>
                 <img src={SunArrowDown} alt="Sun arrow down"/>
-                <span>06:27min</span>
+                <span>{timestampToHour(sunset)}</span>
             </div>
         </SunCardContainer>
     )

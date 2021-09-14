@@ -1,19 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import BreakPoints from '../../../utils/Breakpoints'
 import Search from "./Search";
-import Weather from "./Weather";
+import WeatherInfo from "./WeatherInfo";
 import Footer from "./Footer";
+import {GlobalContext} from "../../../store/GlobalStore";
 
 
 const SideBar: React.FC = () => {
 
+    const {weather} = useContext(GlobalContext);
+
     return (
         <SideBarContainer>
             <Search/>
-            <Weather/>
+            <WeatherInfo weather={weather}/>
             <hr/>
-            <Footer/>
+            <Footer weather={weather}/>
         </SideBarContainer>
     )
 }

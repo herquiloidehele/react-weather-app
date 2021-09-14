@@ -3,7 +3,6 @@ import styled from "styled-components";
 import {WeatherForecast} from "../../../../../models";
 import SolIcon from "../../../../../assets/images/icons/weather/sol.svg";
 import {getShortWeekName} from "../../../../../utils/functions";
-import moment from "moment";
 
 interface Props {
     forecast: WeatherForecast

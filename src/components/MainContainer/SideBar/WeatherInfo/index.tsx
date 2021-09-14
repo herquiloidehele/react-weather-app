@@ -1,8 +1,7 @@
-import React, {useContext} from "react";
+import React from "react";
 import styled from "styled-components";
 import ExapleImage from '../../../../assets/images/icons/weather/example.svg'
 import BreakPoints from '../../../../utils/Breakpoints'
-import {GlobalContext} from "../../../../store/GlobalStore";
 import {Weather} from "../../../../models";
 import moment from "moment";
 import {getWeekName} from '../../../../utils/functions'
@@ -12,8 +11,6 @@ interface Props{
 }
 
 const WeatherInfo: React.FC<Props> = ({weather}) => {
-
-    const context = useContext(GlobalContext);
 
     function formatWeekName() {
         return getWeekName(weather?.date?.getDay());

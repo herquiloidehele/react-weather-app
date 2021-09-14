@@ -13,6 +13,7 @@ export const useFetchForecast = (cityName: string, days: number) => {
 
     useEffect(() => {
         getDaysForecast(cityName, days)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cityName, days, context.unitMeasurement])
 
 

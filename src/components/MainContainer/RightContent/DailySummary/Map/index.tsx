@@ -22,16 +22,17 @@ const Map: React.FC = () => {
 
     const [map, setMap] = React.useState(null);
 
-    const onLoad = React.useCallback(function callback(map) {
+    const onLoad = React.useCallback(function callback(mapCalback) {
         //@ts-ignore
         if (window.google){
             //@ts-ignore
             const bounds = new window.google.maps.LatLngBounds();
-            map.fitBounds(bounds);
-            setMap(map)
+            mapCalback.fitBounds(bounds);
+            setMap(mapCalback)
         }
-    }, [])
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [map])
+    //
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, [])

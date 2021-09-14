@@ -3,20 +3,22 @@ import {UnitiMeasurement, Weather, WeatherForecast} from '../models'
 
 
 //Initializing Instances
-const _unitMeasurement: UnitiMeasurement = {name: 'metric', symbol: '°C'}
+const _unitMeasurement: UnitiMeasurement = {name: 'metric', symbol: '°C'};
 const _weather: Weather = {};
-const _weatherForecast: WeatherForecast[] = []
+const _weatherForecast: WeatherForecast[] = [];
+const _queryCity: string = "Maputo";
 
 
 export const GlobalContext = React.createContext({
-        unitMeasurement: _unitMeasurement,
-        weather: _weather,
-        weatherForecast: _weatherForecast,
-        setUnitMeasurement: (_: UnitiMeasurement) => {},
-        setWeather: (_: Weather) => {},
-        setWeatherForecast: (_: WeatherForecast[]) => {}
-    }
-);
+    unitMeasurement: _unitMeasurement,
+    weather: _weather,
+    weatherForecast: _weatherForecast,
+    queryCity: _queryCity,
+    setUnitMeasurement: (_: UnitiMeasurement) => {},
+    setWeather: (_: Weather) => {},
+    setWeatherForecast: (_: WeatherForecast[]) => {},
+    setQueryCity: (_: string) => {}
+});
 
 export const GlobalStore: React.FC = ({children}) => {
 
@@ -24,6 +26,7 @@ export const GlobalStore: React.FC = ({children}) => {
     const [unitMeasurement, _setUnitMeasurement] = useState(_unitMeasurement);
     const [weather, _setWeather] = useState(_weather);
     const [weatherForecast, _setWeatherForecast] = useState(_weatherForecast);
+    const [queryCity, _setQueryCity] = useState(_queryCity);
 
 
     //Setters
@@ -39,14 +42,20 @@ export const GlobalStore: React.FC = ({children}) => {
         _setWeatherForecast(weatherForecast)
     }
 
+    function setQueryCity(queryCity: string){
+        _setQueryCity(queryCity)
+    }
+
     //wrapping all context together
     const allContext = {
         unitMeasurement,
         weather,
         weatherForecast,
+        queryCity,
         setUnitMeasurement,
         setWeather,
-        setWeatherForecast
+        setWeatherForecast,
+        setQueryCity
     };
 
 

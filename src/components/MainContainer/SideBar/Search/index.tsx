@@ -1,12 +1,26 @@
 import styled from "styled-components";
 import SearchOutline from '../../../../assets/images/icons/search-outline.svg'
+import {useContext} from "react";
+import {GlobalContext} from "../../../../store/GlobalStore";
+
 
 const Search: React.FC = () => {
+
+    const {setQueryCity} = useContext(GlobalContext);
+
+    function handleKeyUp(event?: any){
+        if (event.key === 'Enter'){
+            console.log(event.target.value);
+            setQueryCity(event.target.value);
+        }else{
+            console.log("Not yet");
+        }
+    }
 
     return (
         <InputSearch>
             <img alt={"Search Icon"} src={SearchOutline}/>
-            <input type={"search"} placeholder={"Pesquisar Cidades"}/>
+            <input onKeyUp={(event) => handleKeyUp(event)} type={"search"} placeholder={"Pesquisar Cidades"}/>
         </InputSearch>
     )
 }

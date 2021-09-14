@@ -24,6 +24,7 @@ const Section = styled.section`
   background-color: #F7F6F9;
   border-radius: 0 30px 30px 0;
   padding: 20px;
+  overflow-y: scroll;
 
   @media all and ${BreakPoints.preMedium}{
     width: auto;

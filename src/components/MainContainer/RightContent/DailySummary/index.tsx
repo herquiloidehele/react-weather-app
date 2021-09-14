@@ -6,6 +6,8 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/swiper.min.css';
 import Defaultcard from "./DefaultCard";
 import UnitMeasurement from "./UnitMeasurement";
+import Map from "./Map";
+import WeartherChart from "./WeatherChart";
 
 const DailySummary: React.FC = () => {
 
@@ -58,6 +60,11 @@ const DailySummary: React.FC = () => {
                    </Defaultcard>
                </SwiperSlide>
            </Swiper>
+
+           <div className={"map-container"}>
+               <WeartherChart/>
+               <Map/>
+           </div>
        </DailySummaryContainer>
     )
 }
@@ -72,5 +79,10 @@ const DailySummaryContainer = styled.div`
 
   .cardList{
     margin-top: 2em;
+  }
+  
+  .map-container{
+    margin-top: 2em;
+    margin-bottom: 3em;
   }
 `;

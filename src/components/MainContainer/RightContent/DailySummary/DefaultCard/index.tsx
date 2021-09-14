@@ -52,7 +52,7 @@ const CardContainer = styled.div`
   }
   
   .childrenElement{
-    height: 80px;
+    height: 50px;
     margin: 2em 0;
   }
   

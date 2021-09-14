@@ -22,7 +22,7 @@ const UnitMeasurementContainer = styled.div`
 
   h1 {
     color: #525252;
-    font-size: 5.3em;
+    font-size: 4em;
     text-align: center;
     display: inline;
     font-weight: bolder;
@@ -31,6 +31,6 @@ const UnitMeasurementContainer = styled.div`
   span {
     font-size: 1.3em;
     color: #868686;
-    margin-left: 0.2em;
+    margin-left: 0.4em;
   }
 `;

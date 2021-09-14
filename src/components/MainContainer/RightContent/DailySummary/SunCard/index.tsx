@@ -38,13 +38,13 @@ const SunCardContainer = styled.div`
     margin-bottom: 1em;
     
     img{
-      width: 100%;
+      width: 1.8em;
       height: auto;
     }
     
     span{
       margin-left: 1em;
-      font-size: 1.1em;
+      font-size: 0.9em;
       font-weight: 600;
     }
   }

@@ -10,7 +10,6 @@ const MainContainer: React.FC = () => {
 
     if (error) return <h3>Erro occured</h3>
 
-
     return (
         <Main>
             <SideBar/>

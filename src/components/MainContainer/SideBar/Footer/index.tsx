@@ -1,15 +1,24 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import NuvemExemplo from '../../../../assets/images/icons/weather/NuvemExemplo.svg'
 import Precipitacao from '../../../../assets/images/icons/weather/Precipitacao.svg'
+import CityImage from '../../../../assets/images/cidade.jpeg'
 import Breakpoints from '../../../../utils/Breakpoints'
 import {Weather} from "../../../../models";
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 interface Props{
     weather: Weather;
 }
 
 const Footer: React.FC<Props> = ({weather}) => {
+
+    const {loading} = useContext(GlobalContext);
+
+
+    if (loading) return (
+        <></>
+    )
 
     return (
         <FooterContainer>
@@ -26,7 +35,7 @@ const Footer: React.FC<Props> = ({weather}) => {
             </div>
 
             <div id={"city-image"}>
-                <img alt={"Imagem da Cidade"} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7y18MBsl0VLMNhFE6p-YHmeIcB4lQQXRqhFAfalRd_feDTGJsbsyWmHSzNzQrCWppurM&usqp=CAU"}/>
+                <img alt={"Imagem da Cidade"} src={CityImage}/>
                 <div className={"sombra"}>
                     <h6>{String(weather.city?.name).toUpperCase()} - {weather.city?.country}</h6>
                 </div>

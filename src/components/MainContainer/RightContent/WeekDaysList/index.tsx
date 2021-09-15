@@ -5,11 +5,14 @@ import 'swiper/swiper.min.css';
 import WeekDay from "./WeekDay";
 import BreakPoints from '../../../../utils/Breakpoints'
 import {GlobalContext} from "../../../../store/GlobalStore";
+import SkeletonLoader from "react-loading-skeleton";
 
 
 const WeekDaysList: React.FC = () => {
 
-    const { weatherForecast } = useContext(GlobalContext)
+    const { weatherForecast, loading } = useContext(GlobalContext)
+
+    const loadingItems = [1,2,3,4,5,6];
 
     const breakpoints = {
         320: {
@@ -37,6 +40,19 @@ const WeekDaysList: React.FC = () => {
             spaceBetween: 15
         }
     };
+
+    if (loading) return (
+        <WeekDaysListContainer>
+            <Swiper
+                breakpoints={breakpoints}>
+                {loadingItems.map((nullValue, index) => (
+                    <SwiperSlide key={index} style={{overflow: "hidden"}}>
+                        <SkeletonLoader width={"300px"} height={"300px"}/>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </WeekDaysListContainer>
+    )
 
     return (
       <WeekDaysListContainer>

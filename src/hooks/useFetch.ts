@@ -5,11 +5,9 @@ import {GlobalContext} from "../store/GlobalStore";
 import {convertResponse} from '../utils'
 import {CityResults} from "../models";
 
-export const useFetchForecast = (days: number) => {
+export const useFetchForecast = (days?: number) => {
 
-    const {unitMeasurement, queryCity, setWeather, setWeatherForecast} = useContext(GlobalContext);
-
-    const [loading, setLoading] = useState(true);
+    const {unitMeasurement, queryCity, setWeather, setWeatherForecast, setLoading} = useContext(GlobalContext);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -17,7 +15,7 @@ export const useFetchForecast = (days: number) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [queryCity, unitMeasurement])
 
-    const getDaysForecast = (cityName: string, days: number) => {
+    const getDaysForecast = (cityName: string, days?: number) => {
         setLoading(true);
         openWeatherApi.get(`forecast/?q=${cityName}&cnt=${days}&units=${unitMeasurement.name}`).then((response: AxiosResponse) => {
             console.log({response});
@@ -33,7 +31,7 @@ export const useFetchForecast = (days: number) => {
         });
     }
 
-    return {loading, error};
+    return {error};
 
 }
 

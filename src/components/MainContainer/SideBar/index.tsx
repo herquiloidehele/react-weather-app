@@ -9,13 +9,13 @@ import {GlobalContext} from "../../../store/GlobalStore";
 
 const SideBar: React.FC = () => {
 
-    const {weather, unitMeasurement} = useContext(GlobalContext);
+    const {weather, unitMeasurement, loading} = useContext(GlobalContext);
 
     return (
         <SideBarContainer>
             <Search/>
             <WeatherInfo weather={weather} unitMeasurement={unitMeasurement} />
-            <hr/>
+            {!loading && <hr/>}
             <Footer weather={weather}/>
         </SideBarContainer>
     )

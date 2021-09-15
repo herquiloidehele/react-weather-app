@@ -7,6 +7,7 @@ const _unitMeasurement: UnitiMeasurement = {name: 'metric', symbol: '°C'};
 const _weather: Weather = {};
 const _weatherForecast: WeatherForecast[] = [];
 const _queryCity: string = "Maputo";
+const _loading: boolean = true;
 
 
 export const GlobalContext = React.createContext({
@@ -14,10 +15,12 @@ export const GlobalContext = React.createContext({
     weather: _weather,
     weatherForecast: _weatherForecast,
     queryCity: _queryCity,
+    loading: _loading,
     setUnitMeasurement: (_: UnitiMeasurement) => {},
     setWeather: (_: Weather) => {},
     setWeatherForecast: (_: WeatherForecast[]) => {},
-    setQueryCity: (_: string) => {}
+    setQueryCity: (_: string) => {},
+    setLoading: (_: boolean) => {},
 });
 
 export const GlobalStore: React.FC = ({children}) => {
@@ -27,6 +30,7 @@ export const GlobalStore: React.FC = ({children}) => {
     const [weather, _setWeather] = useState(_weather);
     const [weatherForecast, _setWeatherForecast] = useState(_weatherForecast);
     const [queryCity, _setQueryCity] = useState(_queryCity);
+    const [loading, _setLoading] = useState(_loading);
 
 
     //Setters
@@ -46,16 +50,22 @@ export const GlobalStore: React.FC = ({children}) => {
         _setQueryCity(queryCity)
     }
 
+    function setLoading(loading: boolean){
+        _setLoading(loading)
+    }
+
     //wrapping all context together
     const allContext = {
         unitMeasurement,
         weather,
         weatherForecast,
         queryCity,
+        loading,
         setUnitMeasurement,
         setWeather,
         setWeatherForecast,
-        setQueryCity
+        setQueryCity,
+        setLoading,
     };
 
 

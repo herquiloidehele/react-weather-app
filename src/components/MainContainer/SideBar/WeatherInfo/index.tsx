@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import BreakPoints from '../../../../utils/Breakpoints'
 import {UnitiMeasurement, Weather} from "../../../../models";
-import moment from "moment";
 import {getWeekName} from '../../../../utils/functions'
 import {awsCloundFrontEndpoint} from "../../../../api/httpClient";
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 interface Props{
     weather: Weather;
@@ -13,6 +13,8 @@ interface Props{
 
 const WeatherInfo: React.FC<Props> = ({weather, unitMeasurement}) => {
 
+    const {loading} = useContext(GlobalContext);
+
     function formatWeekName() {
         return getWeekName(weather.date?.getDay());
     }
@@ -20,6 +22,12 @@ const WeatherInfo: React.FC<Props> = ({weather, unitMeasurement}) => {
     function formatTime(){
         return `${(new Date()).getHours()}h:${(new Date()).getMinutes()}min`
     }
+
+
+    if (loading) return (
+        <></>
+    )
+
 
     return (
         <WeatherContainer unidade={unitMeasurement.symbol}>
@@ -46,7 +54,7 @@ type PropsStyle = {
 }
 
 const WeatherContainer = styled.div<PropsStyle>`
-  margin: 3em auto;
+  margin: 1em auto;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -80,6 +88,10 @@ const WeatherContainer = styled.div<PropsStyle>`
 
   @media all and ${BreakPoints.small}{
     margin: 1em auto;
+    
+    .loading{
+      display: none !important;
+    }
     
     img{
       max-width: 100px;

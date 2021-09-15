@@ -11,11 +11,12 @@ import WeartherChart from "./WeatherChart";
 import BreakPoints from '../../../../utils/Breakpoints'
 import {GlobalContext} from "../../../../store/GlobalStore";
 import {UnitiMeasurement, UnitNames} from "../../../../models";
+import SkeletonLoader from "react-loading-skeleton";
 
 
 const DailySummary: React.FC = () => {
 
-    const {weather, unitMeasurement} = useContext(GlobalContext);
+    const {weather, unitMeasurement, loading} = useContext(GlobalContext);
 
     const breakpoints = {
         320: {
@@ -81,8 +82,14 @@ const DailySummary: React.FC = () => {
            </Swiper>
 
            <div className={"map-container"}>
-               <WeartherChart/>
-               <Map/>
+
+               {loading ? <SkeletonLoader width={"100%"} height={"180px"}/> : (
+                   <>
+                       <WeartherChart/>
+                       <Map/>
+                   </>
+               )}
+
            </div>
        </DailySummaryContainer>
     )

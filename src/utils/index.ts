@@ -1,4 +1,4 @@
-import {City, UnitiMeasurement, UnitNames, Weather, WeatherForecast} from "../models";
+import {City, Weather, WeatherForecast} from "../models";
 import {Dictionary} from "underscore";
 import _ from 'lodash'
 

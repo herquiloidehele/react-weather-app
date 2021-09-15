@@ -4,11 +4,12 @@ import HeadingTitle from "../HeadingTitle";
 import BreakPoints from '../../../../utils/Breakpoints'
 import UnitSwitcher from "./Unitswitcher";
 import {GlobalContext} from "../../../../store/GlobalStore";
+import SkeletonLoader from "react-loading-skeleton";
 
 
 const Header: React.FC = () => {
 
-    const {weather} = useContext(GlobalContext);
+    const {weather, loading} = useContext(GlobalContext);
 
     function getTitle(){
         return String(`${weather.city?.name} - ${weather.city?.country}`)
@@ -16,7 +17,9 @@ const Header: React.FC = () => {
 
     return (
         <HeaderContainer>
-            <HeadingTitle title={getTitle()}/>
+            {loading ? (<SkeletonLoader width={"150px"} height={"20px"}/>) : (
+                <HeadingTitle title={getTitle()}/>
+            )}
             <UnitSwitcher/>
         </HeaderContainer>
     )

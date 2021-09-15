@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
+import SkeletonLoader from "react-loading-skeleton";
+import {GlobalContext} from "../../../../../store/GlobalStore";
 
 interface Props{
     title: string;
@@ -7,19 +9,25 @@ interface Props{
 }
 
 const Defaultcard: React.FC<Props> = ({children, title, description}) => {
+
+    const {loading} = useContext(GlobalContext);
+
     return (
-        <CardContainer>
-            <div className={"container"}>
-                <div className={"title"}>
-                    <span>{title}</span>
-                </div>
+        <CardContainer style={{overflow: "hidden"}}>
+            {loading ? (<SkeletonLoader width={"600px"} height={"180px"}/>) : (
+                <div className={"container"}>
+                    <div className={"title"}>
+                        <span>{title}</span>
+                    </div>
 
-                <div className={"childrenElement"}>{children}</div>
+                    <div className={"childrenElement"}>{children}</div>
 
-                <div className={"description"}>
-                    {description}
+                    <div className={"description"}>
+                        {description}
+                    </div>
                 </div>
-            </div>
+            )}
+
         </CardContainer>
     )
 }

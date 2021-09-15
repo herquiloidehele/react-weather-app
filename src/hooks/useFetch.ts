@@ -15,8 +15,7 @@ export const useFetchForecast = (days: number) => {
     useEffect(() => {
         getDaysForecast(queryCity, days)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [queryCity, days, unitMeasurement, queryCity])
-
+    }, [queryCity, unitMeasurement])
 
     const getDaysForecast = (cityName: string, days: number) => {
         setLoading(true);
@@ -27,6 +26,7 @@ export const useFetchForecast = (days: number) => {
             setWeather(todayWeather);
             setWeatherForecast(forecastWeather)
         }).catch(error => {
+            console.log(error);
             setError(error);
         }).finally(() => {
             setLoading(false);

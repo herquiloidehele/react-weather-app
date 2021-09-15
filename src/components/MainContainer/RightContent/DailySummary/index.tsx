@@ -10,11 +10,12 @@ import Map from "./Map";
 import WeartherChart from "./WeatherChart";
 import BreakPoints from '../../../../utils/Breakpoints'
 import {GlobalContext} from "../../../../store/GlobalStore";
+import {UnitiMeasurement, UnitNames} from "../../../../models";
 
 
 const DailySummary: React.FC = () => {
 
-    const {weather} = useContext(GlobalContext);
+    const {weather, unitMeasurement} = useContext(GlobalContext);
 
     const breakpoints = {
         320: {
@@ -39,6 +40,19 @@ const DailySummary: React.FC = () => {
         }
     }
 
+    /**
+     * Calculate the wind speed in Km/h
+     * @param speedValue
+     * @param unitMeasurement
+     */
+    function getWindSpeedInKmPerHour(speedValue: number | undefined, unitMeasurement: UnitiMeasurement): number{
+        if (unitMeasurement.name === UnitNames.CELSIUS){
+            return Math.round(Number(speedValue) * 3.6);
+        }else{
+            return Math.round(Number(speedValue) * 1.609);
+        }
+    }
+
     return (
        <DailySummaryContainer>
            <HeadingTitle title={"Resumo Diário"}/>
@@ -49,7 +63,7 @@ const DailySummary: React.FC = () => {
                className={"cardList"}>
                <SwiperSlide>
                    <Defaultcard title={"Ventos"} description={"Normal"}>
-                       <UnitMeasurement value={weather.wind} unit={"km/h"}/>
+                       <UnitMeasurement value={getWindSpeedInKmPerHour(weather.wind, unitMeasurement)} unit={"km/h"}/>
                    </Defaultcard>
                </SwiperSlide>
 

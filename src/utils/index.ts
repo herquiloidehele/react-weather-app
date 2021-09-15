@@ -1,8 +1,13 @@
-import {City, Weather, WeatherForecast} from "../models";
-import moment from "moment";
+import {City, UnitiMeasurement, UnitNames, Weather, WeatherForecast} from "../models";
 import {Dictionary} from "underscore";
 import _ from 'lodash'
 
+
+/**
+ * Convert the response data from the Open Weather API
+ * to strutured form of the application
+ * @param responseData
+ */
 export const convertResponse = (responseData: any) => {
     let forecastWeather = formatForecastWeather(responseData);
     let todayWeather = formatCurrentDayWeather(responseData);
@@ -15,19 +20,21 @@ function formatCurrentDayWeather(responseData: any){
 
     const forecastItem: any = getCurrentDayWeatherMetadata(responseData);
 
+    console.log({forecastItem});
     const currentWeather: Weather = {
-        date: new Date(forecastItem.dt),
+        date: new Date(forecastItem?.dt_txt),
         max: Math.round(forecastItem.main.temp_max),
         min: Math.round(forecastItem.main.temp_max),
+        temp: Math.round(forecastItem.main.temp),
         condition: _.first([...forecastItem.weather]).description,
         icon: _.first([...forecastItem.weather]).icon,
         humidity: forecastItem.main.humidity,
         pressure: forecastItem.main.pressure,
-        wind: forecastItem.wind.speed,
+        wind: Number(forecastItem.wind.speed),
         city: getCity(responseData.city),
         rain: forecastItem.pop,
-        sunrise: responseData.city.sunrise,
-        sunset: responseData.city.sunset
+        sunrise: Number(responseData.city.sunrise) * 1000, //Unix timestamp seconds to milliseconds
+        sunset: (responseData.city.sunset) * 1000
     }
 
     return currentWeather;
@@ -58,10 +65,12 @@ export function getCurrentDayWeatherMetadata(responseData: any){
 
         const groupedTimestamps: Dictionary<any>  = groupTimestampsIntoDays(responseData.list);
 
-        const currentDate = moment(new Date()).format('YYYY-MM-DD');
-        const currentDayTimestamps = groupedTimestamps[currentDate];
+        console.log({groupedTimestamps});
+        const firstKey: any = _.first(Object.keys(groupedTimestamps));
+        const currentDayTimestamps = groupedTimestamps[firstKey];
         const closestTimestamp = _.first(currentDayTimestamps);
 
+        console.log({closestTimestamp});
         return closestTimestamp;
 
     }catch (error){

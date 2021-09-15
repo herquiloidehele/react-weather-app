@@ -5,7 +5,6 @@ import Search from "./Search";
 import WeatherInfo from "./WeatherInfo";
 import Footer from "./Footer";
 import {GlobalContext} from "../../../store/GlobalStore";
-import SearchResults from "./Search/SearchResults/inde";
 
 
 const SideBar: React.FC = () => {

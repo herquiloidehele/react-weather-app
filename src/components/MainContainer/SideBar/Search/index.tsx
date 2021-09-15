@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import SearchOutline from '../../../../assets/images/icons/search-outline.svg'
-import React, {useContext, useState} from "react";
-import {GlobalContext} from "../../../../store/GlobalStore";
+import React, {useState} from "react";
 import {useFetchPlaces} from "../../../../hooks/useFetch";
 import SearchResults from "./SearchResults/inde";
 
 const Search: React.FC = () => {
 
-    const {setQueryCity} = useContext(GlobalContext);
     const {searchResults, setSearchText} = useFetchPlaces();
 
     const [focusInput, setFocusInput] = useState(false);

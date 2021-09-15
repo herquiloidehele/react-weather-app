@@ -24,6 +24,7 @@ export interface Weather{
     date?: Date,
     max?: number,
     min?: number
+    temp?: number,
     condition?: string,
     icon?: string,
     humidity?: number,

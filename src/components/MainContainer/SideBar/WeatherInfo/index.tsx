@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import ExapleImage from '../../../../assets/images/icons/weather/example.svg'
 import BreakPoints from '../../../../utils/Breakpoints'
 import {UnitiMeasurement, Weather} from "../../../../models";
 import moment from "moment";
@@ -15,14 +14,11 @@ interface Props{
 const WeatherInfo: React.FC<Props> = ({weather, unitMeasurement}) => {
 
     function formatWeekName() {
-        return getWeekName(weather?.date?.getDay());
+        return getWeekName(weather.date?.getDay());
     }
 
     function formatTime(){
-        if (!weather.date){
-            return ''
-        }
-        return `${moment(weather.date).hour()}:${moment(weather.date).minute()}min`
+        return `${(new Date()).getHours()}h:${(new Date()).getMinutes()}min`
     }
 
     return (

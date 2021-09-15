@@ -13,24 +13,16 @@ const Search: React.FC = () => {
     const [focusInput, setFocusInput] = useState(false);
 
     function handleKeyUp(event?: any){
-
         const {value} = event.target;
 
         if (value){
             console.log('setting');
             setSearchText(value);
         }
-
-        if (event.key === 'Enter'){
-            console.log(value);
-            setQueryCity(value);
-        }else{
-            console.log("Not yet");
-        }
     }
 
     function showResultComponent(){
-        return focusInput && searchResults;
+        return !!(focusInput && searchResults.length);
     }
 
     return (

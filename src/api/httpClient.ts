@@ -7,7 +7,7 @@ const openWeatherApi = axios.create({
 
 const placesApi = axios.create({
     timeout: 60000,
-    baseURL: 'http://localhost:8000/api/'
+    baseURL: 'https://simple-places-api.tk/api/'
 });
 
 openWeatherApi.interceptors.request.use(function (config:AxiosRequestConfig) {

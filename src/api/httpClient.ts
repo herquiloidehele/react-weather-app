@@ -13,6 +13,9 @@ const placesApi = axios.create({
 openWeatherApi.interceptors.request.use(function (config:AxiosRequestConfig) {
     const urlWithApiKey = `${config.url}&lang=pt_br&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`;
     return {...config, url: urlWithApiKey}
-})
+});
 
-export {openWeatherApi, placesApi};
+const awsCloundFrontEndpoint = 'https://d3izght30u7n96.cloudfront.net/';
+
+
+export {openWeatherApi, placesApi, awsCloundFrontEndpoint};

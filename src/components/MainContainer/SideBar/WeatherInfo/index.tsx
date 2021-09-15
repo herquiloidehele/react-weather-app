@@ -5,6 +5,7 @@ import BreakPoints from '../../../../utils/Breakpoints'
 import {UnitiMeasurement, Weather} from "../../../../models";
 import moment from "moment";
 import {getWeekName} from '../../../../utils/functions'
+import {awsCloundFrontEndpoint} from "../../../../api/httpClient";
 
 interface Props{
     weather: Weather;
@@ -26,7 +27,7 @@ const WeatherInfo: React.FC<Props> = ({weather, unitMeasurement}) => {
 
     return (
         <WeatherContainer unidade={unitMeasurement.symbol}>
-            <img alt={"WeatherInfo Icon Example"} src={ExapleImage}/>
+            <img alt={"WeatherInfo Icon Example"} src={`${awsCloundFrontEndpoint}${weather.icon}.svg`}/>
 
             <div>
                 <h1>{weather.max}</h1>
@@ -60,7 +61,7 @@ const WeatherContainer = styled.div<PropsStyle>`
   img{
     width: 100%;
     height: auto;
-    max-width: 170px;
+    max-width: 190px;
   }
   
   div{

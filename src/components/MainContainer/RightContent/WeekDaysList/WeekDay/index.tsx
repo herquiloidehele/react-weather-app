@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import {WeatherForecast} from "../../../../../models";
-import SolIcon from "../../../../../assets/images/icons/weather/sol.svg";
 import {getShortWeekName} from "../../../../../utils/functions";
+import {awsCloundFrontEndpoint} from "../../../../../api/httpClient";
 
 interface Props {
     forecast: WeatherForecast
@@ -10,11 +10,10 @@ interface Props {
 
 const WeekDay: React.FC<Props> = ({forecast}) => {
 
-
     return (
         <Div>
             <div><span>{getShortWeekName(forecast.date?.getDay())}</span></div>
-            <img alt={"Icon da Temperatura"} src={SolIcon}/>
+            <img alt={"Icon da Temperatura"} src={`${awsCloundFrontEndpoint}${forecast.icon}.svg`}/>
             <div className={"temps"}>
                 <span className={"max"}>{forecast.max}</span>
                 <span className={"min"}>{forecast.min}</span>
@@ -29,7 +28,7 @@ export default WeekDay;
 
 const Div = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-content: center;
   align-items: center;
   text-align: center;
@@ -40,6 +39,10 @@ const Div = styled.div`
   div:nth-child(1){
     font-size: 0.9em;
     color: #858585;
+  }
+  
+  img{
+    width: 50px;
   }
 
   div.temps{

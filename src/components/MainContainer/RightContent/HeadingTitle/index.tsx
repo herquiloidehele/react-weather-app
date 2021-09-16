@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import BreakPoints from '../../../../utils/Breakpoints'
+import SkeletonLoader from "react-loading-skeleton";
+import React, {useContext} from "react";
+import {GlobalContext} from "../../../../store/GlobalStore";
 
 
 interface Props{
@@ -7,6 +10,12 @@ interface Props{
 }
 
 const HeadingTitle: React.FC<Props> = ({title}) => {
+
+    const { loading } = useContext(GlobalContext)
+
+    if (loading) return (
+        <SkeletonLoader width={"150px"} height={"20px"}/>
+    )
 
     return (
         <Title>{title}</Title>

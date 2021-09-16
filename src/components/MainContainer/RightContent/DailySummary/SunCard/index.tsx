@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import SunArrowUp from '../../../../../assets/images/icons/sun-arrow-up.svg';
 import SunArrowDown from '../../../../../assets/images/icons/sun-arrow-down.svg';
-import moment from "moment";
 
 interface Props{
     sunset: number | undefined,
@@ -16,7 +15,7 @@ const SunCard: React.FC<Props> = ({sunset, sunrise}) => {
         if (!timestamp){
             return ''
         }
-     return `${moment(timestamp).hour()}h:${moment(timestamp).minute()}min`
+     return `${new Date(timestamp).getHours()}h:${new Date(timestamp).getMinutes()}min`
     }
 
     return (

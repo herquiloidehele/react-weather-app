@@ -49,7 +49,10 @@ function getCity(city: any): City{
     return {
         id: city.id,
         name: city.name,
-        coord: city.coord,
+        coord: {
+            lng: Number(city.coord.lon),
+            lat: Number(city.coord.lat)
+        },
         country: city.country,
         timezone: city.timezone
     };

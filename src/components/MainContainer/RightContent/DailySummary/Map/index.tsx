@@ -1,16 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import GoogleMapsApiKey from '../../../../../api/GoogleMapsApiKey';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import {Marker, GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import {GlobalContext} from "../../../../../store/GlobalStore";
 
 const containerStyle = {
     width: '100%',
     height: '160px',
     borderRadius: "12px"
-};
-
-const center = {
-    lat: -25.951803,
-    lng: 32.597797
 };
 
 const Map: React.FC = () => {
@@ -21,12 +17,14 @@ const Map: React.FC = () => {
     });
 
     const [map, setMap] = React.useState(null);
+    const {weather} = useContext(GlobalContext);
 
     const onLoad = React.useCallback(function callback(mapCalback) {
         //@ts-ignore
         if (window.google){
             //@ts-ignore
             const bounds = new window.google.maps.LatLngBounds();
+            console.log({bounds});
             mapCalback.fitBounds(bounds);
             setMap(mapCalback)
         }
@@ -38,16 +36,23 @@ const Map: React.FC = () => {
     }, [])
 
 
+
+
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
-            center={center}
+            center={weather.city?.coord}
             zoom={10}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >
-            { /* Child components, such as markers, info windows, etc. */ }
-            <></>
+            <>
+                <Marker
+                    key={1}
+                    title={weather.city?.name}
+                    position={weather.city?.coord}
+                />
+            </>
         </GoogleMap>
     ) : <>
         Loading Map...

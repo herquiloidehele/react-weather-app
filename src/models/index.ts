@@ -13,7 +13,7 @@ export interface City{
     id?: string,
     name?: string,
     coord?: {
-        lon: number,
+        lng: number,
         lat: number
     },
     country?: string,

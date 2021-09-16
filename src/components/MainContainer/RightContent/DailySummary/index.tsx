@@ -6,12 +6,12 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/swiper.min.css';
 import Defaultcard from "./DefaultCard";
 import UnitMeasurement from "./UnitMeasurement";
-import Map from "./Map";
 import WeartherChart from "./WeatherChart";
 import BreakPoints from '../../../../utils/Breakpoints'
 import {GlobalContext} from "../../../../store/GlobalStore";
 import {UnitiMeasurement, UnitNames} from "../../../../models";
 import SkeletonLoader from "react-loading-skeleton";
+import WeatherMap from "./WeatherMap";
 
 
 const DailySummary: React.FC = () => {
@@ -86,7 +86,7 @@ const DailySummary: React.FC = () => {
                {loading ? <SkeletonLoader width={"100%"} height={"180px"}/> : (
                    <>
                        <WeartherChart/>
-                       <Map/>
+                       <WeatherMap/>
                    </>
                )}
 

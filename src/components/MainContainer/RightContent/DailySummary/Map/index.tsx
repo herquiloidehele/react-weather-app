@@ -38,7 +38,7 @@ const Map: React.FC = () => {
 
 
 
-    return isLoaded ? (
+    return (weather && isLoaded) ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={weather.city?.coord}

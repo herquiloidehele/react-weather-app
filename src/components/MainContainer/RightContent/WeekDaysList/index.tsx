@@ -28,15 +28,15 @@ const WeekDaysList: React.FC = () => {
             spaceBetween: 10
         },
         900: {
-            slidesPerView: 5.2,
+            slidesPerView: 4.8,
             spaceBetween: 10
         },
         1200: {
             slidesPerView: 5.4,
             spaceBetween: 10
         },
-        1490: {
-            slidesPerView: 7,
+        1690: {
+            slidesPerView: 6,
             spaceBetween: 15
         }
     };

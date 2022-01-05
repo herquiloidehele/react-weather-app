@@ -24,7 +24,7 @@ function formatCurrentDayWeather(responseData: any){
     const currentWeather: Weather = {
         date: new Date(forecastItem?.dt_txt),
         max: Math.round(forecastItem.main.temp_max),
-        min: Math.round(forecastItem.main.temp_max),
+        min: Math.round(forecastItem.main.temp_min),
         temp: Math.round(forecastItem.main.temp),
         condition: _.first([...forecastItem.weather]).description,
         icon: _.first([...forecastItem.weather]).icon,

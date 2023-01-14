@@ -1,9 +1,11 @@
-import {openWeatherApi, placesApi} from '../api/httpClient'
+import {openWeatherApi} from '../api/httpClient'
 import {useContext, useEffect, useState} from "react";
 import {AxiosResponse} from "axios";
 import {GlobalContext} from "../store/GlobalStore";
 import {convertResponse} from '../utils'
 import {CityResults} from "../models";
+import Cities from "../data/citites.json";
+import {fetchPlaces} from "../utils/functions";
 
 export const useFetchForecast = (days?: number) => {
 
@@ -53,24 +55,9 @@ export const useFetchPlaces = () => {
 
     function searchPlaces(searchCityText: string){
         setLoading(true);
-
-        placesApi.get('cities/?searchCity='+ searchCityText).then((response: AxiosResponse) => {
-            const formatResult: CityResults[] = response.data.map((dataItem: any) => {
-                const result: CityResults = {
-                    name: dataItem.name,
-                    countryCode: dataItem.country
-                }
-
-                return result;
-            });
-
-            setSearchResult(formatResult);
-        }).catch(error => {
-            console.log(error);
-            setSearchResult([]);
-        }).finally(() => {
-            setLoading(false)
-        })
+        const searchResults = fetchPlaces(searchCityText, Cities.data);
+        setSearchResult(searchResults);
+        setLoading(false);
     }
 
     return {loading, searchResults, setSearchText}

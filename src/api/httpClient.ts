@@ -15,7 +15,7 @@ openWeatherApi.interceptors.request.use(function (config:AxiosRequestConfig) {
     return {...config, url: urlWithApiKey}
 });
 
-const awsCloundFrontEndpoint = 'https://d3izght30u7n96.cloudfront.net/';
+const awsCloundFrontEndpoint = '';
 
 
 export {openWeatherApi, placesApi, awsCloundFrontEndpoint};
